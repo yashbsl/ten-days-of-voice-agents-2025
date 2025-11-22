@@ -1,7 +1,8 @@
 import { Public_Sans } from 'next/font/google';
 import localFont from 'next/font/local';
 import { headers } from 'next/headers';
-import { ApplyThemeScript, ThemeToggle } from '@/components/app/theme-toggle';
+import { ThemeToggle } from "@/components/app/theme-toggle";
+import ApplyThemeClient from "./ApplyThemeClient";
 import { cn, getAppConfig, getStyles } from '@/lib/utils';
 import '@/styles/globals.css';
 
@@ -41,33 +42,53 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default async function RootLayout({ children }: RootLayoutProps) {
-  const hdrs = await headers();
-  const appConfig = await getAppConfig(hdrs);
-  const { pageTitle, pageDescription } = appConfig;
-  const styles = getStyles(appConfig);
+// export default async function RootLayout({ children }: RootLayoutProps) {
+//   const hdrs = await headers();
+//   const appConfig = await getAppConfig(hdrs);
+//   const { pageTitle, pageDescription } = appConfig;
+//   const styles = getStyles(appConfig);
 
+//   return (
+//     <html
+//       lang="en"
+//       suppressHydrationWarning
+//       className={cn(
+//         publicSans.variable,
+//         commitMono.variable,
+//         'scroll-smooth font-sans antialiased'
+//       )}
+//     >
+//       <head>
+//         {/* {styles && <style>{styles}</style>} */}
+//         <title>{pageTitle}</title>
+//         <meta name="description" content={pageDescription} />
+//         <ApplyThemeScript />
+//       </head>
+//       <body className="overflow-x-hidden">
+//         {children}
+//         <div className="group fixed bottom-0 left-1/2 z-50 mb-2 -translate-x-1/2">
+//           <ThemeToggle className="translate-y-20 transition-transform delay-150 duration-300 group-hover:translate-y-0" />
+//         </div>
+//       </body>
+//     </html>
+//   );
+// }
+import ThemeStyles from "./ThemeStyles";
+
+export const metadata = {
+  title: "Agent Day 1",
+  description: "Voice agent project",
+};
+
+export default function RootLayout({ children }) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={cn(
-        publicSans.variable,
-        commitMono.variable,
-        'scroll-smooth font-sans antialiased'
-      )}
-    >
+    <html lang="en" suppressHydrationWarning className="public_san">
       <head>
-        {styles && <style>{styles}</style>}
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <ApplyThemeScript />
       </head>
-      <body className="overflow-x-hidden">
+      <body>
+        <ApplyThemeClient />   {/* runs theme script only on client */}
+        <ThemeStyles />
         {children}
-        <div className="group fixed bottom-0 left-1/2 z-50 mb-2 -translate-x-1/2">
-          <ThemeToggle className="translate-y-20 transition-transform delay-150 duration-300 group-hover:translate-y-0" />
-        </div>
       </body>
     </html>
   );
