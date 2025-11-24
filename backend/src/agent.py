@@ -1,9 +1,3 @@
-# ======================================================
-# 🌿 DAILY WELLNESS VOICE COMPANION
-# 👨‍⚕️ Tutorial by Dr. Abhishek: https://www.youtube.com/@drabhishek.5460/videos
-# 💼 Professional Voice AI Development Course
-# 🚀 Context-Aware Agents & JSON Persistence
-# ======================================================
 
 import logging
 import json
@@ -12,12 +6,6 @@ import asyncio
 from datetime import datetime
 from typing import Annotated, Literal, List, Optional
 from dataclasses import dataclass, field, asdict
-
-print("\n" + "🌿" * 50)
-print("🚀 WELLNESS COMPANION - TUTORIAL BY DR. ABHISHEK")
-print("📚 SUBSCRIBE: https://www.youtube.com/@drabhishek.5460/videos")
-print("💡 agent.py LOADED SUCCESSFULLY!")
-print("🌿" * 50 + "\n")
 
 from dotenv import load_dotenv
 from pydantic import Field
