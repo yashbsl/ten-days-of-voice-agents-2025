@@ -1,3 +1,10 @@
+# ======================================================
+# 🌿 DAILY WELLNESS VOICE COMPANION
+# 👨‍⚕️ Tutorial by Dr. Abhishek: https://www.youtube.com/@drabhishek.5460/videos
+# 💼 Professional Voice AI Development Course
+# 🚀 Context-Aware Agents & JSON Persistence
+# ======================================================
+
 import logging
 import json
 import os
@@ -5,6 +12,12 @@ import asyncio
 from datetime import datetime
 from typing import Annotated, Literal, List, Optional
 from dataclasses import dataclass, field, asdict
+
+print("\n" + "🌿" * 50)
+print("🚀 WELLNESS COMPANION - TUTORIAL BY DR. ABHISHEK")
+print("📚 SUBSCRIBE: https://www.youtube.com/@drabhishek.5460/videos")
+print("💡 agent.py LOADED SUCCESSFULLY!")
+print("🌿" * 50 + "\n")
 
 from dotenv import load_dotenv
 from pydantic import Field
@@ -207,7 +220,10 @@ def prewarm(proc: JobProcess):
 
 async def entrypoint(ctx: JobContext):
     ctx.log_context_fields = {"room": ctx.room.name}
+
+    print("\n" + "🌿" * 25)
     print("🚀 STARTING WELLNESS SESSION")
+    print("👨‍⚕️ Tutorial by Dr. Abhishek")
     
     # 1. Load History from JSON
     history = load_history()
